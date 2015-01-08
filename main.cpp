@@ -49,6 +49,7 @@ public:
     void handleRequest(const Wt::Http::Request& request,
             Wt::Http::Response& response) {
     	response.addHeader("Content-Type", "application/json; charset=utf-8");
+        response.addHeader("Access-Control-Allow-Origin", "*");
     	response.setMimeType("application/json");
 
 //    	response.out() << "<html>\n"

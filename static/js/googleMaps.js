@@ -26,8 +26,8 @@ function dropTruckMarkers() {
 		}
 	}).success(function(msg) {
 		// debug_flag && console.log('success: '+msg);
-		var trucks = $.parseJSON(msg);
-
+		//var trucks = $.parseJSON(msg);
+                var trucks = msg;
 		var i = 0;
 		var numNewMarkers = 0;
 
