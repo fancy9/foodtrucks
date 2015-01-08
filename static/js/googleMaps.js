@@ -34,8 +34,8 @@ function dropTruckMarkers() {
 		$.each(trucks, function() {
 			var address = this['Address'];
 			var applicant = this['Applicant'];
-			var facilityType = this['Facilitytype'];
-			var foodItems = this['Fooditems'];
+			var facilityType = this['FacilityType'];
+			var foodItems = this['FoodItems'];
 			var latitude = parseFloat(this['Latitude']);
 			var longitude = parseFloat(this['Longitude']);
 
