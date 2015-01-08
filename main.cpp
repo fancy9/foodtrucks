@@ -82,7 +82,7 @@ public:
                 data += bson.jsonString();
             }
             data += " ]\n";
-            cout<<data<<endl;
+            cout<<data.size()<<endl;
             response.out() << data;
 
         } catch (const mongo::DBException &e) {
