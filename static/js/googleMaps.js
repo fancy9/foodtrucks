@@ -32,12 +32,12 @@ function dropTruckMarkers() {
 		var numNewMarkers = 0;
 
 		$.each(trucks, function() {
-			var address = this['address'];
-			var applicant = this['applicant'];
-			var facilityType = this['facilitytype'];
-			var foodItems = this['fooditems'];
-			var latitude = parseFloat(this['latitude']);
-			var longitude = parseFloat(this['longitude']);
+			var address = this['Address'];
+			var applicant = this['Applicant'];
+			var facilityType = this['Facilitytype'];
+			var foodItems = this['Fooditems'];
+			var latitude = parseFloat(this['Latitude']);
+			var longitude = parseFloat(this['Longitude']);
 
 			var markerIcon;
 			if (facilityType == 'Push Cart') {
