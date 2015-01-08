@@ -52,12 +52,11 @@ public:
 
     	response.setMimeType("application/json");
 
-    	/*response.out() << "<html>\n"
+    	response.out() << "<html>\n"
     	    "<head>\n"
     	        "<link title=\"Uber Foodtrucks Backend Response\" type=\"text/css\"</link>\n"
     	    "</head>\n"
     	    "<body>\n";
-    	    */
 
         std::string startLat = *(request.getParameter("startLat"));
         std::string startLng = *(request.getParameter("startLng"));
@@ -94,7 +93,7 @@ public:
             std::cout << "caught " << e.what() << std::endl;
         }
 
-        //response.out() << "</body>\n</html>";
+        response.out() << "</body>\n</html>";
         // make sql query
 
         // make the response
