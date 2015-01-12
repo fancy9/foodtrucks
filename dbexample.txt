@@ -1,0 +1,13 @@
+db.runCommand( { geoNear: "things", near: {type: "Point", coordinates: [ -122.395881039335, 37.7891192076677 ] }, spherical: true, maxDistance: 50000, limit: 10000 } )
+
+db.runCommand({ text: "things", search: "Cake Chinese", sort: "textScore", limit: 2})
+
+db.things.ensureIndex( { loc: "2dsphere" } )
+
+db.things.find().forEach( function(myDoc) { db.things.update( { _id: myDoc._id }, { $set: { loc: { type: "Point", coordinates : [ myDoc.Longitude, myDoc.Latitude ] } } } ) } );
+
+db.things.find( { loc: { $geoWithin: { $centerSphere: [ [ -122.393543363003, 37.7108379449887 ], 5 / 3959 ] } }, $text: { $search: "taco"} } ).count()
+
+db.runCommand( {aggregate: "things", pipeline: [ {$match: { $text: {$search: "Taco"}, Applicant: "Giant*", loc: { $geoWithin: { $centerSphere: [ [ -122.393543363003, 37.7108379449887 ], 3 / 3959 ] } } } }, { $sort: { score: { $meta: "textScore" }} }] } )
+
+loc: { $geoWithin: { $box:  [ [ 0, 0 ], [ 100, 100 ] ] } }
