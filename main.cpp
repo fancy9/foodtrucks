@@ -30,7 +30,7 @@
 #include <iostream>
 #include <string>
 #include "UccDB.h"
-#include "UccDBQuerry.h"
+#include "UccDBQuery.h"
 
 using namespace std;
 
@@ -105,13 +105,14 @@ public:
 			cout << locationType << endl;
 			const string * radius = request.getParameter("radius");
 			const string * limit = request.getParameter("limit");
+			const string * offset = request.getParameter("offset");
 			const string * foodItems = request.getParameter("food");
 			const string * sortText = request.getParameter("sort");
 			const string * name = request.getParameter("name");
 			const string * category = request.getParameter("category");
 			const string * status = request.getParameter("status");
 
-			UccDBQuerry query("things", locationType, location, radius, limit,
+			UccDBQuery query("things", locationType, location, radius, limit, offset,
 					foodItems, sortText, name, status, category);
 			BSONObj result;
 			cout << query.getQueryCommand().jsonString() << endl;
@@ -264,8 +265,9 @@ void HelloApplication::greet() {
 	string col = "things";
 	string lt = "";
 	string limit = "10";
+	string offset = "0";
 	string food = nameEdit_->text().toUTF8();
-	UccDBQuerry query(col, lt, NULL, NULL, &limit,
+	UccDBQuery query(col, lt, NULL, NULL, &limit, &offset,
 			&food, NULL, NULL, NULL, NULL);
 	BSONObj result;
 	cout << query.getQueryCommand().jsonString() << endl;
